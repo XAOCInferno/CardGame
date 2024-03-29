@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4676974279044848444
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1655573583489396291, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_Name
+      value: DeckView
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098331980960487312, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4616626001235542702, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616626001235542702, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616626001235542702, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575665224070957713, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: _TargetMeshRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258318779563042147, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_Name
+      value: DeckInteractionObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643775961601281272, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_Name
+      value: DeckView
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739565133640013900, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_Name
+      value: DeckInteractionMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729605863911552879, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729605863911552879, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729605863911552879, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6276
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857060346065568167, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857060346065568167, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857060346065568167, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 917029827483569435, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+    - {fileID: 5575665224070957713, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1655573583489396291, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3306465597524330150}
+    - targetCorrespondingSourceObject: {fileID: 6258318779563042147, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6735939984256964538}
+  m_SourcePrefab: {fileID: 100100000, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+--- !u!23 &295205318386481792 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4971750787557368252, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+  m_PrefabInstance: {fileID: 4676974279044848444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1602701569937751647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6258318779563042147, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+  m_PrefabInstance: {fileID: 4676974279044848444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6735939984256964538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602701569937751647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050b079d79dd4db4297aa097da3fb1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _CollisionObject: {fileID: 6650465729383197841}
+  view: {fileID: 3306465597524330150}
+--- !u!114 &2606944456504144082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7262698130863369198, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+  m_PrefabInstance: {fileID: 4676974279044848444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205454737483806079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a10ea0de6d62e042afaa5f57d9057a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6205454737483806079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1655573583489396291, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+  m_PrefabInstance: {fileID: 4676974279044848444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3306465597524330150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205454737483806079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34180440a6d4734d8efc70628749b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DefaultMaterial: {fileID: 2100000, guid: cbb3c91813ba83848a97f1a23b2f5840, type: 2}
+  _HoverMaterial: {fileID: 2100000, guid: f9ec3ea00d96c49459b97d7b16c469d2, type: 2}
+  _SelectedMaterial: {fileID: 2100000, guid: 52a3847861b37f348ba4d5bb777b7d81, type: 2}
+  _SelectedHoverMaterial: {fileID: 2100000, guid: 35bba8743acad5444a930fae15c515d0, type: 2}
+  _TargetMeshRenderer: {fileID: 295205318386481792}
+  _InteractionMenu: {fileID: 2606944456504144082}
+--- !u!65 &6650465729383197841 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2066237486305130413, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+  m_PrefabInstance: {fileID: 4676974279044848444}
+  m_PrefabAsset: {fileID: 0}

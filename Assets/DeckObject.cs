@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardObject : InteractableObject
+public class DeckObject : InteractableObject
 {
 
-    [SerializeField] private CardObjectView view;
+    [SerializeField] private DeckObjectView view;
 
     protected override void OnEnable()
     {

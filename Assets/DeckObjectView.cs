@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CardObjectView : ViewObject
+public class DeckObjectView : ViewObject
 {
 
     public void DoChangeSelectionStatus(byte hoverStatus)
