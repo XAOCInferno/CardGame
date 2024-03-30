@@ -36,6 +36,7 @@ public class DynamicEnvironmentObject : EnvironmentObject
 
     public void OrderPositionChange(Vector3? newTargetPosition, byte? travelType, float? timeToTravel)
     {
+
         if (newTargetPosition == null)
         {
 

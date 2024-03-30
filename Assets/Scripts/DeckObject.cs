@@ -5,7 +5,8 @@ using UnityEngine;
 public class DeckObject : InteractableObject
 {
 
-    [SerializeField] private DeckObjectView view;
+    [SerializeField] private DeckObjectView View;
+    [SerializeField] private DeckController Controls;
 
     protected override void OnEnable()
     {
@@ -26,21 +27,21 @@ public class DeckObject : InteractableObject
     private void OrderSelectionStatusChange()
     {
 
-        view.DoChangeSelectionStatus(SelectedStatus);
+        View.DoChangeSelectionStatus(SelectedStatus);
 
     }
 
     override protected void OnSelected()
     {
 
-        view.DoChangeSelectionStatus(SelectedStatus);
+        View.DoChangeSelectionStatus(SelectedStatus);
 
     }
 
     override protected void OnDeSelected()
     {
 
-        view.DoChangeSelectionStatus(SelectedStatus);
+        View.DoChangeSelectionStatus(SelectedStatus);
 
     }
 

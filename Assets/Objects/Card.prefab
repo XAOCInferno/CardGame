@@ -311,7 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CollisionObject: {fileID: 2066237486305130413}
-  view: {fileID: 5575665224070957713}
+  ParentEnvironmentalObject: {fileID: 2708589834571529030}
+  _View: {fileID: 5575665224070957713}
 --- !u!1 &6643775961601281272
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7857060346065568167}
+  - component: {fileID: 2708589834571529030}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -346,6 +348,18 @@ Transform:
   - {fileID: 7729605863911552879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2708589834571529030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643775961601281272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7b9c1ed7797e547a5986b142fb7c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6739565133640013900
 GameObject:
   m_ObjectHideFlags: 0

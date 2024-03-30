@@ -11,16 +11,16 @@ public class TileController : MonoBehaviour
     private void OnEnable()
     {
 
-        Actions.RegisterTileObject += RegisterNewTile;
-        Actions.DeRegisterTileObject += DeRegisterTile;
+        Actions.OnRegisterTileObject += RegisterNewTile;
+        Actions.OnDeRegisterTileObject += DeRegisterTile;
 
     }
 
     private void OnDisable()
     {
 
-        Actions.DeRegisterTileObject -= RegisterNewTile;
-        Actions.DeRegisterTileObject -= DeRegisterTile;
+        Actions.OnDeRegisterTileObject -= RegisterNewTile;
+        Actions.OnDeRegisterTileObject -= DeRegisterTile;
 
     }
 

@@ -14,7 +14,7 @@ public static class eSelectionTypes
 }
 
 [RequireComponent(typeof(Collider))]
-public abstract class InteractableObject : MonoBehaviour
+public abstract class InteractableObject : CachedObject
 {
 
     [SerializeField] private Collider _CollisionObject;
@@ -27,10 +27,17 @@ public abstract class InteractableObject : MonoBehaviour
     protected abstract void OnEnable();
     protected abstract void OnDisable();
 
-    protected void _OnDisable() => Actions.OnPlayerClick -= UpdateSelectionStatus;
+    protected void _OnDisable() 
+    {
+
+        DeCacheSelf();
+        Actions.OnPlayerClick -= UpdateSelectionStatus;
+
+    }
 
     protected void _OnEnable()
     {
+        CacheSelf();
 
         if (_CollisionObject == null)
         {
@@ -118,7 +125,7 @@ public abstract class InteractableObject : MonoBehaviour
 
     private void UpdateSelectionStatus(bool IsClickUp)
     {
-        if (!IsClickUp) { return; }
+        if (IsClickUp) { return; } //Later on we want to set this to a "dropped" state
 
         if (SelectedStatus == eSelectionTypes.Hover)
         {

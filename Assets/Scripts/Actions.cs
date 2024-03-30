@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using UnityEngine.UI;
+using UnityEngine;
 
 public static class Actions
 {
@@ -13,13 +13,22 @@ public static class Actions
     public static Action OnBoardSetupBegin;
     public static Action OnBoardSetupComplete;
 
-    public static Action<TileObject> RegisterTileObject;
-    public static Action<TileObject> DeRegisterTileObject;
+    public static Action<TileObject> OnRegisterTileObject; //OBSOLETE! TileObject: Tile to register
+    public static Action<TileObject> OnDeRegisterTileObject; //OBSOLETE! TileObject: Tile to register
 
-    public static Action<UnityEngine.Vector3> OnMovementInput;
+    public static Action<UnityEngine.Vector3> OnMovementInput; //Vector3: Direction of movement
     public static Action OnChangeFocusedItem;
 
-    public static Action<bool> OnPlayerClick;
+    public static Action<bool> OnPlayerClick; //Bool: true = mouse button up, false = mouse button down
+
+    public static Action<int, CardObject> OnGenerateCardObject; //Int: ID of card to generate | CardObject: Card to generate
+    public static Action<int> OnDestroyCardObject; //Int: ID of card to destroy
+    public static Action<int, CardObject> OnAssignCardController; //Int: ID of card to generate | CardObject: Card to generate
+
+    public static Action<int> OnDrawCard; //Int: Number of cards to draw
+    public static Action<CardObject, Vector3> OnAddCardToHand; //CardObject: Card to add to hand | Vector3: Position to teleport card to (eg: the top of the deck)
+
+    public static Action<PlayerInfo> OnAddNewPlayer; //PlayerInfo: The information for the new player added
 
 }
 

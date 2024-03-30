@@ -8,7 +8,7 @@ public class TileObject : DynamicEnvironmentObject
     private void OnEnable()
     {
 
-        Actions.RegisterTileObject.InvokeAction(this);
+        Actions.OnRegisterTileObject.InvokeAction(this);
         Actions.OnLevelLoadBegin += DisableSelf;
 
     }
@@ -17,7 +17,7 @@ public class TileObject : DynamicEnvironmentObject
     {
 
         Actions.OnLevelLoadBegin -= DisableSelf;
-        Actions.DeRegisterTileObject.InvokeAction(this);
+        Actions.OnDeRegisterTileObject.InvokeAction(this);
 
     }
 
