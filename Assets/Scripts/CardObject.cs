@@ -28,6 +28,8 @@ public class CardObject : InteractableObject
     protected override void OnEnable()
     {
 
+        self = this;
+
         Actions.OnChangeFocusedItem += OrderSelectionStatusChange;
 
         _OnEnable();

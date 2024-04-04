@@ -1,26 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DeckManager : MonoBehaviour
 {
 
-    /// <summary>
-    /// To continue this I need to change how the flow of cards works.
-    /// We need a way of working out which player owns which cards.
-    /// The cards currently have their data generated then object registered.
-    /// By the time the object is registered, we lose track of their player.
-    /// Is it bad to simply send the player data through to the card so that it makes it to the deck manager or can we reorgnaise flow?
-    /// </summary>
-
-    //private Dictionary<int, List<int>> DeckIDsByPlayerID = new();
+    [SerializeField] private GameObject DeckPrefab;
     private Dictionary<int, List<int>> CardIDsByPlayerID = new();
+    private Dictionary<int, DeckObject> AllDeckObjectsByID = new();
+    private List<int> UnusedDecksByID = new();
+
 
     private void OnEnable()
     {
 
         Actions.OnAddNewPlayer += AddPlayerInfoDictionaryEntry;
-        Actions.OnAssignCardController += AddCardIDToDictionaryEntry;
+        Actions.OnPopulatePlayerDeck += PopulateDeck;
+        Actions.OnSetCardsToPlayer += AddCardIDsToPlayer;
+        Actions.OnGenerateDeckObject += SetupDeckDetails;
 
     }
 
@@ -28,7 +27,9 @@ public class DeckManager : MonoBehaviour
     {
 
         Actions.OnAddNewPlayer -= AddPlayerInfoDictionaryEntry;
-        Actions.OnAssignCardController -= AddCardIDToDictionaryEntry;
+        Actions.OnPopulatePlayerDeck -= PopulateDeck;
+        Actions.OnSetCardsToPlayer -= AddCardIDsToPlayer;
+        Actions.OnGenerateDeckObject -= SetupDeckDetails;
 
     }
 
@@ -45,10 +46,50 @@ public class DeckManager : MonoBehaviour
 
     }
 
-    private void AddCardIDToDictionaryEntry(int newPlayerID, int cardID)
+    private void AddCardIDsToPlayer(int newPlayerID, List<int> cardIDs)
     {
 
-        CardIDsByPlayerID[newPlayerID].Add(cardID);
+        CardIDsByPlayerID[newPlayerID] = cardIDs;
+
+    }
+
+    private void PopulateDeck(int playerID, DeckInfo deck)
+    {
+
+        CreateBlankDeckForPlayer(playerID);
+        AssignBlankDecksToPlayer(playerID); 
+        Actions.OnAssignDeckToPlayer.InvokeAction(playerID, deck.CardsInDeck.Count);
+
+        for(int i = 0; i < CardIDsByPlayerID[playerID].Count; i++)
+        {
+
+            Actions.OnAssignCardBlueprint.InvokeAction(CardIDsByPlayerID[playerID].ElementAt(i), deck.CardsInDeck[i]);
+
+        }
+
+    }
+
+    private void CreateBlankDeckForPlayer(int playerID)
+    {
+
+        Instantiate(DeckPrefab, new Vector3(100, 0, 0), new(), transform);
+
+    }
+
+    private void SetupDeckDetails(int ID, DeckObject newDeckObject)
+    {
+
+        AllDeckObjectsByID.Add(ID, newDeckObject);
+        UnusedDecksByID.Add(ID);
+
+    }
+
+    private void AssignBlankDecksToPlayer(int playerID)
+    {
+        //This probably doesn't need to be an event unless we need to inform the player manager
+        //Actions.OnSetDeckToPlayer.InvokeAction(playerID, UnusedDecksByID[0]);
+        //AllDeckObjectsByID[UnusedDecksByID[0]];
+        UnusedDecksByID.RemoveAt(0);
 
     }
 

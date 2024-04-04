@@ -8,11 +8,17 @@ public class DeckObject : InteractableObject
     [SerializeField] private DeckObjectView View;
     [SerializeField] private DeckController Controls;
 
+    [SerializeField] private DeckDataInScene _DeckData;
+    public DeckDataInScene DeckData { get => _DeckData; set => _DeckData = value; }
+
     protected override void OnEnable()
     {
 
         Actions.OnChangeFocusedItem += OrderSelectionStatusChange;
+
         _OnEnable();
+
+        Actions.OnGenerateDeckObject.InvokeAction(ID, this);
 
     }
 
@@ -20,7 +26,10 @@ public class DeckObject : InteractableObject
     {
 
         Actions.OnChangeFocusedItem -= OrderSelectionStatusChange;
+
         _OnDisable();
+
+        Actions.OnDestroyDeckObject.InvokeAction(ID);
 
     }
 

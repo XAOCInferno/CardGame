@@ -6,9 +6,11 @@ public static class ObjectCacher
 {
     private static int CurrentUniqueID = 0;
     private static List<int> RecycledIDs = new();
+    private static Dictionary<int, CachedObject> AllCachedObjects = new();
+
 
     //Simply generate a new ID
-    public static int CacheObject()
+    public static int CacheObject(CachedObject self)
     {
         int returnID;
 
@@ -36,6 +38,9 @@ public static class ObjectCacher
 
         }
 
+        Dbg.Log(eLogType.Info, eLogVerbosity.Simple, "Caching new object: " + self.name + ", Giving ID: " + CurrentUniqueID);
+        AllCachedObjects.Add(returnID, self);
+
         return returnID;
 
     }
@@ -43,7 +48,25 @@ public static class ObjectCacher
     public static void DeCacheObject(int objectCachedID)
     {
 
+        AllCachedObjects.Remove(objectCachedID);
         RecycledIDs.Add(objectCachedID);
 
     }
+
+    public static CachedObject GetCachedObject(int objectCachedID)
+    {
+        
+        if(AllCachedObjects.ContainsKey(objectCachedID) == false)
+        {
+
+            Dbg.Log(eLogType.Error, eLogVerbosity.Full, "Cached object with ID of: " + objectCachedID + " does not exist! Returning null.");
+
+            return null;
+
+        }
+
+        return AllCachedObjects[objectCachedID];
+
+    }
+
 }

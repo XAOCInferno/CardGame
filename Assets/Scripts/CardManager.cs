@@ -7,12 +7,15 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] private GameObject CardPrefab;
     private Dictionary<int, CardObject> AllCardObjectsByID = new();
-    
+    private List<int> UnusedCardsFromID = new();
+
     private void OnEnable()
     {
 
         Actions.OnGenerateCardObject += SetupCardData;
         Actions.OnSetupBlankDeck += CreateManyBlankCards;
+        Actions.OnAssignDeckToPlayer += SetCardsToPlayer;
+        Actions.OnAssignCardBlueprint += AssignCardDetails;
 
     }
 
@@ -21,6 +24,8 @@ public class CardManager : MonoBehaviour
 
         Actions.OnGenerateCardObject -= SetupCardData;
         Actions.OnSetupBlankDeck -= CreateManyBlankCards;
+        Actions.OnAssignDeckToPlayer -= SetCardsToPlayer;
+        Actions.OnAssignCardBlueprint -= AssignCardDetails;
 
     }
 
@@ -28,6 +33,7 @@ public class CardManager : MonoBehaviour
     {
 
         AllCardObjectsByID.Add(ID, newCardObject);
+        UnusedCardsFromID.Add(ID);
 
     }
 
@@ -46,14 +52,31 @@ public class CardManager : MonoBehaviour
     private void CreateBlankCard()
     {
 
-        Instantiate(CardPrefab, new Vector3(100, 0, 0), new(), transform).GetComponent<CardObject>();
+        Instantiate(CardPrefab, new Vector3(100, 0, 0), new(), transform);
 
     }
 
-    private void AssignCardDetails(CardObject card, CardInfo blueprint, PlayerInfo ownerPlayer)
+    private void AssignCardDetails(int cardID, CardInfo blueprint)
     {
 
-        card.CardData.CardBlueprint = blueprint;
+        AllCardObjectsByID[cardID].CardData.CardBlueprint = blueprint;
+
+    }
+
+    private void SetCardsToPlayer(int playerID, int numberOfCards)
+    {
+
+        List<int> CardIDsToSend = new();
+
+        for(int i = 0; i < numberOfCards; i++)
+        {
+
+            CardIDsToSend.Add(AllCardObjectsByID[UnusedCardsFromID[0]].ID);
+            UnusedCardsFromID.RemoveAt(0);
+
+        }
+
+        Actions.OnSetCardsToPlayer(playerID, CardIDsToSend);
 
     }
 

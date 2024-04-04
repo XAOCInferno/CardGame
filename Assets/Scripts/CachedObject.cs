@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class CachedObject : MonoBehaviour
 {
+
+    //The topmost class must define itself as "self"
+    protected dynamic self;
+
     private int _ID;
     public int ID { get => _ID; set => _ID = value; }
 
     protected void CacheSelf()
     {
 
-        _ID = ObjectCacher.CacheObject();
+        _ID = ObjectCacher.CacheObject(this);
 
     }
 

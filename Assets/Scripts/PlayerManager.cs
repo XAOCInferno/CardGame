@@ -28,13 +28,8 @@ public class PlayerManager : MonoBehaviour
             AllPlayersByID.Add(newID, newPlayer);
 
             Actions.OnAddNewPlayer.InvokeAction(newID);
-
-        }
-
-        for (int i = 0; i < AllPlayersByID.Count; i++)
-        {
-
-            Actions.OnSetupBlankDeck.InvokeAction(AllPlayersByID[i].Info.Deck.CardsInDeck.Count);
+            Actions.OnSetupBlankDeck.InvokeAction(AllPlayersByID[newID].Info.Deck.CardsInDeck.Count);
+            Actions.OnPopulatePlayerDeck(newID, AllPlayersByID[newID].Info.Deck);
 
         }
 

@@ -102,6 +102,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 917029827483569435, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
     - {fileID: 5575665224070957713, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+    - {fileID: 6851623399780522964, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4616626001235542702, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
@@ -117,6 +118,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6258318779563042147, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1364637164063614874}
+    - targetCorrespondingSourceObject: {fileID: 6258318779563042147, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5223295552262391105}
   m_SourcePrefab: {fileID: 100100000, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
 --- !u!4 &69383241892714898 stripped
 Transform:
@@ -145,9 +149,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050b079d79dd4db4297aa097da3fb1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CollisionObject: {fileID: 0}
+  _CollisionObject: {fileID: 6650465729383197841}
   View: {fileID: 3306465597524330150}
   Controls: {fileID: 3022063630690017357}
+  _DeckData: {fileID: 5223295552262391105}
+--- !u!114 &5223295552262391105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602701569937751647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0417af8c5ca6544afdaa662bac0a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2077457241985603524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6643775961601281272, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
@@ -199,3 +216,8 @@ MonoBehaviour:
   _SelectedHoverMaterial: {fileID: 2100000, guid: 35bba8743acad5444a930fae15c515d0, type: 2}
   _TargetMeshRenderer: {fileID: 295205318386481792}
   _InteractionMenu: {fileID: 2606944456504144082}
+--- !u!65 &6650465729383197841 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 2066237486305130413, guid: 09a82f486814add458bbb22dcd88b351, type: 3}
+  m_PrefabInstance: {fileID: 4676974279044848444}
+  m_PrefabAsset: {fileID: 0}

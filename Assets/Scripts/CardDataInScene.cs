@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public static class eRelationshipTypes
@@ -20,7 +19,5 @@ public class CardDataInScene : MonoBehaviour
 
     private CardInfo _CardBlueprint;
     public CardInfo CardBlueprint { get => _CardBlueprint; set => _CardBlueprint = value; }
-
-
 
 }
