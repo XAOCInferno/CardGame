@@ -43,7 +43,7 @@ public static class ObjectCacher
     public static void DeCacheObject(int objectCachedID)
     {
 
-
+        RecycledIDs.Add(objectCachedID);
 
     }
 }

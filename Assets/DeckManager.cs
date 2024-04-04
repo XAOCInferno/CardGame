@@ -14,13 +14,13 @@ public class DeckManager : MonoBehaviour
     /// </summary>
 
     //private Dictionary<int, List<int>> DeckIDsByPlayerID = new();
-    private Dictionary<PlayerInfo, List<int>> CardIDsByPlayerInfo = new();
+    private Dictionary<int, List<int>> CardIDsByPlayerID = new();
 
     private void OnEnable()
     {
 
         Actions.OnAddNewPlayer += AddPlayerInfoDictionaryEntry;
-        //Actions.OnAssignCardController += AddCardIDToDictionaryEntry;
+        Actions.OnAssignCardController += AddCardIDToDictionaryEntry;
 
     }
 
@@ -28,7 +28,7 @@ public class DeckManager : MonoBehaviour
     {
 
         Actions.OnAddNewPlayer -= AddPlayerInfoDictionaryEntry;
-        //Actions.OnAssignCardController -= AddCardIDToDictionaryEntry;
+        Actions.OnAssignCardController -= AddCardIDToDictionaryEntry;
 
     }
 
@@ -38,17 +38,17 @@ public class DeckManager : MonoBehaviour
 
     }
 
-    private void AddPlayerInfoDictionaryEntry(PlayerInfo newPlayer)
+    private void AddPlayerInfoDictionaryEntry(int newPlayerID)
     {
 
-        CardIDsByPlayerInfo.Add(newPlayer, new());
+        CardIDsByPlayerID.Add(newPlayerID, new());
 
     }
 
-    private void AddCardIDToDictionaryEntry(PlayerInfo newPlayer, int cardID)
+    private void AddCardIDToDictionaryEntry(int newPlayerID, int cardID)
     {
 
-        CardIDsByPlayerInfo[newPlayer].Add(cardID);
+        CardIDsByPlayerID[newPlayerID].Add(cardID);
 
     }
 

@@ -23,12 +23,13 @@ public static class Actions
 
     public static Action<int, CardObject> OnGenerateCardObject; //Int: ID of card to generate | CardObject: Card to generate
     public static Action<int> OnDestroyCardObject; //Int: ID of card to destroy
-    public static Action<int, CardObject> OnAssignCardController; //Int: ID of card to generate | CardObject: Card to generate
+    public static Action<int, int> OnAssignCardController; //Int: ID of owner player | Int: ID of card to generate
 
     public static Action<int> OnDrawCard; //Int: Number of cards to draw
     public static Action<CardObject, Vector3> OnAddCardToHand; //CardObject: Card to add to hand | Vector3: Position to teleport card to (eg: the top of the deck)
 
-    public static Action<PlayerInfo> OnAddNewPlayer; //PlayerInfo: The information for the new player added
+    public static Action<int> OnAddNewPlayer; //Int: UniqueID for the player
+    public static Action<int> OnSetupBlankDeck; //Int: Size of deck
 
 }
 

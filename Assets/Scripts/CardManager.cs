@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
+
     [SerializeField] private GameObject CardPrefab;
     private Dictionary<int, CardObject> AllCardObjectsByID = new();
-
+    
     private void OnEnable()
     {
 
         Actions.OnGenerateCardObject += SetupCardData;
-        Actions.OnAddNewPlayer += SetupPlayerCardData;
+        Actions.OnSetupBlankDeck += CreateManyBlankCards;
 
     }
 
@@ -19,7 +20,7 @@ public class CardManager : MonoBehaviour
     {
 
         Actions.OnGenerateCardObject -= SetupCardData;
-        Actions.OnAddNewPlayer -= SetupPlayerCardData;
+        Actions.OnSetupBlankDeck -= CreateManyBlankCards;
 
     }
 
@@ -30,15 +31,29 @@ public class CardManager : MonoBehaviour
 
     }
 
-    private void SetupPlayerCardData(PlayerInfo targetPlayer)
+    private void CreateManyBlankCards(int newBlankCount)
     {
 
-        for(int i = 0; i < targetPlayer.Deck.CardsInDeck.Count; i++) 
+        for(int i = 0; i < newBlankCount; i++) 
         {
 
-            Instantiate(CardPrefab, new Vector3(100,0,0),new(),transform);
+            CreateBlankCard();
 
         }
+
+    }
+
+    private void CreateBlankCard()
+    {
+
+        Instantiate(CardPrefab, new Vector3(100, 0, 0), new(), transform).GetComponent<CardObject>();
+
+    }
+
+    private void AssignCardDetails(CardObject card, CardInfo blueprint, PlayerInfo ownerPlayer)
+    {
+
+        card.CardData.CardBlueprint = blueprint;
 
     }
 

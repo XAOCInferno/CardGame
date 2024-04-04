@@ -22,6 +22,9 @@ public class CardObject : InteractableObject
     [SerializeField] private byte _CardState = eCardStates.InDeck;
     public byte CardState { get => _CardState; set => _CardState = value; }
 
+    [SerializeField] private CardDataInScene _CardData;
+    public CardDataInScene CardData { get => _CardData; set => _CardData = value; }
+
     protected override void OnEnable()
     {
 

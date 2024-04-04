@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
 
+    [SerializeField] private GameObject PlayerPrefab;
     [SerializeField] private PlayerInfo[] AllPlayerInfo;
+
+    private Dictionary<int, PlayerObject> AllPlayersByID = new();
 
     private void OnEnable()
     {
@@ -20,10 +23,29 @@ public class PlayerManager : MonoBehaviour
         for(int i = 0; i < AllPlayerInfo.Length; i++)
         {
 
-            //We need to instantiate a player for its ID instead of simply sending off the player info here I think...
-            Actions.OnAddNewPlayer.InvokeAction(AllPlayerInfo[i]);
+            PlayerObject newPlayer = CreateNewBlankPlayerObject();
+            int newID = newPlayer.InitialPlayerSetup(AllPlayerInfo[i]);
+            AllPlayersByID.Add(newID, newPlayer);
+
+            Actions.OnAddNewPlayer.InvokeAction(newID);
 
         }
+
+        for (int i = 0; i < AllPlayersByID.Count; i++)
+        {
+
+            Actions.OnSetupBlankDeck.InvokeAction(AllPlayersByID[i].Info.Deck.CardsInDeck.Count);
+
+        }
+
+        //Action: send command to organise the card info. This will use a blank card and replace its data where required. Then this card is sorted in the deck manager with player id
+
+    }
+
+    private PlayerObject CreateNewBlankPlayerObject()
+    {
+
+        return Instantiate(PlayerPrefab, new Vector3(100, 0, 0), new(), transform).GetComponent<PlayerObject>();
 
     }
 
