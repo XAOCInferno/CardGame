@@ -20,6 +20,7 @@ public class DeckManager : MonoBehaviour
         Actions.OnPopulatePlayerDeck += PopulateDeck;
         Actions.OnSetCardsToPlayer += AddCardIDsToPlayer;
         Actions.OnGenerateDeckObject += SetupDeckDetails;
+        Actions.OnDrawCard += DrawCards;
 
     }
 
@@ -30,13 +31,14 @@ public class DeckManager : MonoBehaviour
         Actions.OnPopulatePlayerDeck -= PopulateDeck;
         Actions.OnSetCardsToPlayer -= AddCardIDsToPlayer;
         Actions.OnGenerateDeckObject -= SetupDeckDetails;
+        Actions.OnDrawCard -= DrawCards;
 
     }
 
-    private void DrawCards()
+    private void DrawCards(int numberOfCards)
     {
         //Draw
-
+        Dbg.Log(eLogType.Info, eLogVerbosity.Simple, "Attempting to draw " + numberOfCards);
     }
 
     private void AddPlayerInfoDictionaryEntry(int newPlayerID)
