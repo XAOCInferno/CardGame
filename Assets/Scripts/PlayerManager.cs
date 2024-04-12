@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerInfo[] AllPlayerInfo;
 
     private Dictionary<int, PlayerObject> AllPlayersByID = new();
-
+    
     private void OnEnable()
     {
 
@@ -24,8 +24,10 @@ public class PlayerManager : MonoBehaviour
         {
 
             PlayerObject newPlayer = CreateNewBlankPlayerObject();
-            int newID = newPlayer.InitialPlayerSetup(AllPlayerInfo[i]);
+            int newID = newPlayer.InitialPlayerSetup(AllPlayerInfo[i], (byte) (AllPlayersByID.Count + 1));
             AllPlayersByID.Add(newID, newPlayer);
+
+            ReassignDeckSpawnMarkerName(newPlayer);
 
             Actions.OnAddNewPlayer.InvokeAction(newID);
             Actions.OnSetupBlankDeck.InvokeAction(AllPlayersByID[newID].Info.Deck.CardsInDeck.Count);
@@ -34,6 +36,16 @@ public class PlayerManager : MonoBehaviour
         }
 
         //Action: send command to organise the card info. This will use a blank card and replace its data where required. Then this card is sorted in the deck manager with player id
+
+    }
+
+    private void ReassignDeckSpawnMarkerName(PlayerObject newPlayer)
+    {
+
+        string ExpectedMarkerName = MarkerProvider.GenerateMarkerName(eMarkerTypes.MainDeckStartLocation, (AllPlayersByID.Count + 1).ToString());
+        string DesiredMarkerName = MarkerProvider.GenerateMarkerName(eMarkerTypes.MainDeckStartLocation, (AllPlayersByID.Count + newPlayer.ID).ToString());
+
+        MarkerProvider.ChangeMarkerName(eMarkerTypes.MainDeckStartLocation, ExpectedMarkerName, DesiredMarkerName);
 
     }
 

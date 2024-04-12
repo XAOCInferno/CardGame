@@ -8,6 +8,9 @@ public class PlayerObject : EnvironmentObject
     private PlayerInfo _Info;
     public PlayerInfo Info { get => _Info; set => _Info = value; }
 
+    private byte _PlayerNumber;
+    public byte PlayerNumber { get => _PlayerNumber; set => _PlayerNumber = value; }
+
     protected void OnEnable()
     {
 
@@ -22,10 +25,11 @@ public class PlayerObject : EnvironmentObject
 
     }
 
-    public int InitialPlayerSetup(PlayerInfo newInfo)
+    public int InitialPlayerSetup(PlayerInfo newInfo, byte PlayerNumber)
     {
 
         _Info = newInfo;
+        _PlayerNumber = PlayerNumber;
         return ID;
 
     }

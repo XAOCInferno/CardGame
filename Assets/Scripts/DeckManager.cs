@@ -8,6 +8,7 @@ public class DeckManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject DeckPrefab;
+
     private Dictionary<int, List<int>> CardIDsByPlayerID = new();
     private Dictionary<int, DeckObject> AllDeckObjectsByID = new();
     private List<int> UnusedDecksByID = new();
@@ -71,10 +72,20 @@ public class DeckManager : MonoBehaviour
 
     }
 
-    private void CreateBlankDeckForPlayer(int playerID)
+    private void CreateBlankDeckForPlayer(int playerNumber)
     {
 
-        Instantiate(DeckPrefab, new Vector3(100, 0, 0), new(), transform);
+        Vector3 DeckLocation = new();
+        MarkerObject TargetMarker = MarkerProvider.GetMarker(MarkerProvider.GenerateMarkerName(eMarkerTypes.MainDeckStartLocation, playerNumber.ToString()));
+
+        if(TargetMarker != null)
+        {
+
+            DeckLocation = TargetMarker.transform.position;
+
+        }
+
+        Instantiate(DeckPrefab, DeckLocation, new(), transform);
 
     }
 
