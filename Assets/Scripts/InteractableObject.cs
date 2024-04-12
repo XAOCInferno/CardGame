@@ -123,9 +123,9 @@ public abstract class InteractableObject : CachedObject
 
     }
 
-    private void UpdateSelectionStatus(bool IsClickUp)
+    private void UpdateSelectionStatus(bool IsClickUp, bool IsOverUI)
     {
-        if (IsClickUp) { return; } //Later on we want to set this to a "dropped" state
+        if (IsClickUp || IsOverUI) { return; } //Later on we want to set this to a "dropped" state
 
         if (SelectedStatus == eSelectionTypes.Hover)
         {

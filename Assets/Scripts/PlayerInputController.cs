@@ -20,15 +20,24 @@ public class PlayerInputController : MonoBehaviour
     public void OnClick(InputValue value)
     {
 
-        float valueAsFloat = value.Get<float>();
-        bool isUp = false;
+        bool isUp = GetIfClickIsUp(value);
+        Actions.OnPlayerClick.InvokeAction(isUp, PlayerInputControllerState.MouseIsOverUI);
 
-        if(valueAsFloat == 0)
+    }
+
+    private bool GetIfClickIsUp(InputValue value)
+    {
+
+        float valueAsFloat = value.Get<float>();
+
+        if (valueAsFloat == 0)
         {
-            isUp = true;
+
+            return true;
+
         }
 
-        Actions.OnPlayerClick.InvokeAction(isUp);
+        return false;
 
     }
 

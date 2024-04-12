@@ -19,7 +19,7 @@ public static class Actions
     public static Action<UnityEngine.Vector3> OnMovementInput; //Vector3: Direction of movement
     public static Action OnChangeFocusedItem;
 
-    public static Action<bool> OnPlayerClick; //Bool: true = mouse button up, false = mouse button down
+    public static Action<bool, bool> OnPlayerClick; //Bool: true = mouse button up, false = mouse button down | Bool: Is click on a UI element?
 
     public static Action<int, CardObject> OnGenerateCardObject; //Int: ID of card to generate | CardObject: Card to generate
     public static Action<int, DeckObject> OnGenerateDeckObject; //Int: ID of card to generate | DeckObject: Deck to generate
