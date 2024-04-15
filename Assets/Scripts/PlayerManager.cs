@@ -42,8 +42,8 @@ public class PlayerManager : MonoBehaviour
     private void ReassignDeckSpawnMarkerName(PlayerObject newPlayer)
     {
 
-        string ExpectedMarkerName = MarkerProvider.GenerateMarkerName(eMarkerTypes.MainDeckStartLocation, (AllPlayersByID.Count + 1).ToString());
-        string DesiredMarkerName = MarkerProvider.GenerateMarkerName(eMarkerTypes.MainDeckStartLocation, (AllPlayersByID.Count + newPlayer.ID).ToString());
+        string ExpectedMarkerName = MarkerProvider.GenerateMarkerName(eMarkerTypes.MainDeckStartLocation, newPlayer.PlayerNumber.ToString());
+        string DesiredMarkerName = MarkerProvider.GenerateMarkerName(eMarkerTypes.MainDeckStartLocation, newPlayer.ID.ToString());
 
         MarkerProvider.ChangeMarkerName(eMarkerTypes.MainDeckStartLocation, ExpectedMarkerName, DesiredMarkerName);
 

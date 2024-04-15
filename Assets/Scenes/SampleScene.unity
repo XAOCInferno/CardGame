@@ -863,7 +863,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1505084291305821637, guid: b5225e5cb3ac3c74f84f819d4c53c6d7, type: 3}
       propertyPath: m_Name
-      value: MkrDeckObj (1)
+      value: Mkr_MainDeckStartLocation2
       objectReference: {fileID: 0}
     - target: {fileID: 1627232510998305576, guid: b5225e5cb3ac3c74f84f819d4c53c6d7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -904,6 +904,10 @@ PrefabInstance:
     - target: {fileID: 1627232510998305576, guid: b5225e5cb3ac3c74f84f819d4c53c6d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874120812540031936, guid: b5225e5cb3ac3c74f84f819d4c53c6d7, type: 3}
+      propertyPath: Player
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1621,7 +1625,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1505084291305821637, guid: b5225e5cb3ac3c74f84f819d4c53c6d7, type: 3}
       propertyPath: m_Name
-      value: MkrDeckObj
+      value: Mkr_MainDeckStartLocation1
       objectReference: {fileID: 0}
     - target: {fileID: 1627232510998305576, guid: b5225e5cb3ac3c74f84f819d4c53c6d7, type: 3}
       propertyPath: m_LocalPosition.x

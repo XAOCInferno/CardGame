@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Timeline;
-
+using Unity.VisualScripting.FullSerializer;
 
 public enum eMarkerTypes
 {
@@ -37,6 +35,7 @@ public static class MarkerProvider
         else
         {
 
+            Dbg.Log(eLogType.Info, eLogVerbosity.Full, "Adding Marker to data, ID: " + newMarkerID);
             MarkersAsDictionary.Add(newMarkerID, newMarker);
 
         }
@@ -130,7 +129,7 @@ public static class MarkerProvider
 
         }
 
-        return MarkerNamesFromEnum[markerType];
+        return MarkerNamesFromEnum[markerType] + markerName;
 
     }
 

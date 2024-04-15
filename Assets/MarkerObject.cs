@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.LowLevel;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -10,7 +9,7 @@ using UnityEditor;
 public class MarkerObject : CachedObject
 {
     [SerializeField] private eMarkerTypes MarkerType;
-    private int Player;
+    [SerializeField] private int Player;
 
     #region Editor
 #if UNITY_EDITOR
@@ -19,10 +18,10 @@ public class MarkerObject : CachedObject
     {
         public override void OnInspectorGUI()
         {
+            if (Application.isPlaying == true) return; 
             base.OnInspectorGUI();
 
             MarkerObject marker = (MarkerObject)target;
-
             if (marker.MarkerType == eMarkerTypes.MainDeckStartLocation)
             {
 
@@ -35,17 +34,10 @@ public class MarkerObject : CachedObject
         {
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Player", GUILayout.MaxWidth(125));
-            marker.Player = EditorGUILayout.IntField(marker.Player);
 
-            if(marker.Player < 1)
-            {
-                marker.Player = 1;
-            }
-            else if(marker.Player > 2)
-            {
-                marker.Player = 2;
-            }
+            marker.Player = Mathf.Clamp(marker.Player, 1, 2);
+
+            marker.gameObject.name = MarkerProvider.GenerateMarkerName(marker.MarkerType, marker.Player.ToString());
 
             EditorGUILayout.EndHorizontal();
 
