@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 
 public enum eMarkerTypes
 {
 
     Generic = 0,
-    MainDeckStartLocation = 1
+    MainDeckStartLocation = 1,
+    HandPosition = 2
 
 }
 
@@ -17,7 +17,8 @@ public static class MarkerProvider
     public static Dictionary<Enum, string> MarkerNamesFromEnum = new()
     { 
         {eMarkerTypes.Generic, "Mkr_Generic" }, 
-        {eMarkerTypes.MainDeckStartLocation, "Mkr_MainDeckStartLocation" } 
+        {eMarkerTypes.MainDeckStartLocation, "Mkr_MainDeckStartLocation" },
+        {eMarkerTypes.HandPosition, "Mkr_HandPosition" }
     };
 
     private static Dictionary<string, MarkerObject> MarkersAsDictionary = new();

@@ -14,6 +14,8 @@ public class DeckManager : MonoBehaviour
     private List<int> UnusedDecksByID = new();
 
 
+    private int DEBUG_CARD_OFFSET = 0; //DELETE THIS once we have logic for knowing the deck order
+
     private void OnEnable()
     {
 
@@ -36,10 +38,20 @@ public class DeckManager : MonoBehaviour
 
     }
 
-    private void DrawCards(int numberOfCards)
+    private void DrawCards(int deckID, int numberOfCards)
     {
-        //Draw
+
         Dbg.Log(eLogType.Info, eLogVerbosity.Simple, "Attempting to draw " + numberOfCards);
+
+        for (int i = 0; i < numberOfCards; i++)
+        {
+
+            //Need to get proper logic on drawing here later.
+            Actions.OrderAddCardToHand(CardIDsByPlayerID[AllDeckObjectsByID[deckID].DeckData.OwnerPlayerID][i+DEBUG_CARD_OFFSET], AllDeckObjectsByID[deckID].transform.position);
+            DEBUG_CARD_OFFSET++;
+
+        }
+
     }
 
     private void AddPlayerInfoDictionaryEntry(int newPlayerID)
@@ -60,7 +72,7 @@ public class DeckManager : MonoBehaviour
     {
 
         CreateBlankDeckForPlayer(playerID);
-        AssignBlankDecksToPlayer(playerID); 
+        AssignBlankDeckToPlayer(playerID); 
         Actions.OnAssignDeckToPlayer.InvokeAction(playerID, deck.CardsInDeck.Count);
 
         for(int i = 0; i < CardIDsByPlayerID[playerID].Count; i++)
@@ -97,11 +109,11 @@ public class DeckManager : MonoBehaviour
 
     }
 
-    private void AssignBlankDecksToPlayer(int playerID)
+    private void AssignBlankDeckToPlayer(int playerID)
     {
+
         //This probably doesn't need to be an event unless we need to inform the player manager
-        //Actions.OnSetDeckToPlayer.InvokeAction(playerID, UnusedDecksByID[0]);
-        //AllDeckObjectsByID[UnusedDecksByID[0]];
+        Actions.OnSetBlankDeckToPlayer.InvokeAction(playerID, UnusedDecksByID[0]);
         UnusedDecksByID.RemoveAt(0);
 
     }

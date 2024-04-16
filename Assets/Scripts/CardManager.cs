@@ -16,6 +16,7 @@ public class CardManager : MonoBehaviour
         Actions.OnSetupBlankDeck += CreateManyBlankCards;
         Actions.OnAssignDeckToPlayer += SetCardsToPlayer;
         Actions.OnAssignCardBlueprint += AssignCardDetails;
+        Actions.OrderAddCardToHand += DoDraw;
 
     }
 
@@ -26,6 +27,7 @@ public class CardManager : MonoBehaviour
         Actions.OnSetupBlankDeck -= CreateManyBlankCards;
         Actions.OnAssignDeckToPlayer -= SetCardsToPlayer;
         Actions.OnAssignCardBlueprint -= AssignCardDetails;
+        Actions.OrderAddCardToHand -= DoDraw;
 
     }
 
@@ -77,6 +79,13 @@ public class CardManager : MonoBehaviour
         }
 
         Actions.OnSetCardsToPlayer(playerID, CardIDsToSend);
+
+    }
+
+    private void DoDraw(int cardToAdd, Vector3 startPosition)
+    {
+
+        Actions.OnAddCardToHand.InvokeAction(AllCardObjectsByID[cardToAdd], startPosition);
 
     }
 

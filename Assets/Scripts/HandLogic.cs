@@ -7,7 +7,6 @@ public class HandLogic : MonoBehaviour
 
     [SerializeField] private Vector3 FirstCardPositionInHand;
     [SerializeField] private Vector3 PositionOffsetPerCard;
-    private int positionOffset;
     private Dictionary<int, DynamicEnvironmentObject> AllCardEnvironmentObjects = new();
 
     private void OnEnable()
@@ -37,12 +36,12 @@ public class HandLogic : MonoBehaviour
     private void SetAllCardPositions()
     {
 
-        Vector3 nextCardPosition = AllCardEnvironmentObjects.Count * PositionOffsetPerCard / 2;
+        Vector3 nextCardPosition = AllCardEnvironmentObjects.Count/2 * PositionOffsetPerCard / 2;
 
-        for (int i = 0; i < AllCardEnvironmentObjects.Count; i++)
+        foreach (KeyValuePair<int, DynamicEnvironmentObject> pair in AllCardEnvironmentObjects)
         {
 
-            AllCardEnvironmentObjects[i].OrderPositionChange(nextCardPosition, eMovementTypes.Smooth, 2);
+            pair.Value.OrderPositionChange(nextCardPosition, eMovementTypes.Smooth, 2);
             nextCardPosition += PositionOffsetPerCard;
 
         }

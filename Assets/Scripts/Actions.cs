@@ -27,11 +27,13 @@ public static class Actions
     public static Action<int> OnDestroyDeckObject; //Int: ID of card to generate | CardObject: Deck to generate
     public static Action<Enum, string> ForceGenerateNewMarker; //Enum: Marker type | string: name of the marker to generate its unique ID
 
-    public static Action<int> OnDrawCard; //Int: Number of cards to draw
+    public static Action<int, int> OnDrawCard; //Int: Deck ID | Int: Number of cards to draw
+    public static Action<int, Vector3> OrderAddCardToHand; //Int: ID of the card to add to hand | Vector3: Start position of the card
     public static Action<CardObject, Vector3> OnAddCardToHand; //CardObject: Card to add to hand | Vector3: Position to teleport card to (eg: the top of the deck)
 
     public static Action<int> OnAddNewPlayer; //Int: UniqueID for the player
     public static Action<int> OnSetupBlankDeck; //Int: Size of deck
+    public static Action<int, int> OnSetBlankDeckToPlayer; //Int: Player ID | Int: Deck ID
     public static Action<int, DeckInfo> OnPopulatePlayerDeck; //Int: Player ID | int: number of player in game | DeckInfo: Information on the deck the player is using
     public static Action<int, int> OnAssignDeckToPlayer; //Int: Player ID | Int: Number of cards in deck
     public static Action<int, List<int>> OnSetCardsToPlayer; //Int: Player ID | Lit<Int>: All the Card IDs

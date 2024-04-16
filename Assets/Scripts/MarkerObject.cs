@@ -22,7 +22,7 @@ public class MarkerObject : CachedObject
             base.OnInspectorGUI();
 
             MarkerObject marker = (MarkerObject)target;
-            if (marker.MarkerType == eMarkerTypes.MainDeckStartLocation)
+            if (marker.MarkerType == eMarkerTypes.MainDeckStartLocation || marker.MarkerType == eMarkerTypes.HandPosition)
             {
 
                 DrawMainDeckSettings(marker);

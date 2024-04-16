@@ -15,8 +15,11 @@ public class DeckObject : InteractableObject
     {
 
         Actions.OnChangeFocusedItem += OrderSelectionStatusChange;
+        Actions.OnSetBlankDeckToPlayer += CheckAndSetOwner;
 
         _OnEnable();
+
+        Controls.LinkedDeckID = ID;
 
         Actions.OnGenerateDeckObject.InvokeAction(ID, this);
 
@@ -26,6 +29,7 @@ public class DeckObject : InteractableObject
     {
 
         Actions.OnChangeFocusedItem -= OrderSelectionStatusChange;
+        Actions.OnSetBlankDeckToPlayer -= CheckAndSetOwner;
 
         _OnDisable();
 
@@ -54,5 +58,17 @@ public class DeckObject : InteractableObject
 
     }
 
+    private void CheckAndSetOwner(int playerID, int deckID)
+    {
+
+        if(deckID == ID)
+        {
+
+            Dbg.Log(eLogType.Info, eLogVerbosity.Full, "Assigning Deck: " + deckID + " to player: " + playerID);
+            _DeckData.OwnerPlayerID = playerID;
+
+        }
+
+    }
 
 }

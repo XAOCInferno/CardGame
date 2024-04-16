@@ -28,9 +28,8 @@ public class CardObject : InteractableObject
     protected override void OnEnable()
     {
 
-        self = this;
-
         Actions.OnChangeFocusedItem += OrderSelectionStatusChange;
+        Actions.OrderAddCardToHand += DoDraw;
 
         _OnEnable();
 
@@ -42,6 +41,7 @@ public class CardObject : InteractableObject
     {
 
         Actions.OnChangeFocusedItem -= OrderSelectionStatusChange;
+        Actions.OrderAddCardToHand -= DoDraw;
 
         _OnDisable();
 
@@ -67,6 +67,20 @@ public class CardObject : InteractableObject
     {
 
         _View.DoChangeSelectionStatus(SelectedStatus);
+
+    }
+
+    private void DoDraw(int cardID, Vector3 startPosition)
+    {
+
+        if (cardID == ID)
+        {
+
+            //We may want to put this bit here, or leave it for the hand...
+            //ParentEnvironmentalObject.OrderPositionChange(startPosition, eMovementTypes.Hard, 0);
+            _CardState = eCardStates.InHand;
+
+        }
 
     }
 
